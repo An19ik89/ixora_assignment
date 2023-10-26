@@ -23,13 +23,8 @@ class HomeView extends GetView<HomeController> {
                 SliverAppBar(
                   floating: false,
                   expandedHeight: getProportionateScreenHeight(context, 120.0),
-                  flexibleSpace: FlexibleSpaceBar(
-                    title: InkWell(
-                      child: const Text(AppStrings.HOME_APPBAR_TITLE),
-                      onTap: () {
-                        Get.toNamed(Routes.TESTVIEW);
-                      },
-                    ),
+                  flexibleSpace: const FlexibleSpaceBar(
+                    title: Text(AppStrings.HOME_APPBAR_TITLE),
                   ),
                 ),
                 SliverPadding(
