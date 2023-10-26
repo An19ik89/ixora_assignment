@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../controllers/galleryview_controller.dart';
+import '../controllers/galleryView_controller.dart';
 
 class GalleryViewBinding extends Bindings {
   @override
