@@ -7,12 +7,15 @@ import 'package:get/get.dart';
 import 'package:dio/dio.dart' as DIO;
 import 'package:hive/hive.dart';
 import 'package:ixora_assignment/api/client/api_client.dart';
+import 'package:ixora_assignment/core/api_endpoints.dart';
 import 'package:ixora_assignment/core/app_values.dart';
+import 'package:ixora_assignment/data/model/photoresponse.dart';
 
 
 
 class PhotoProvider extends GetxService {
 
+  //dummy data
   var test =
     [
       {

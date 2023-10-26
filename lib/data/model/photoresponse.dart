@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 import 'package:hive/hive.dart';
-
+part 'photoresponse.g.dart';
 
 
 List<PhotoResponseModel?> photoResponseModelFromJson(String str) => List<PhotoResponseModel?>.from(json.decode(str).map((x) => PhotoResponseModel.fromJson(x)));
