@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_downloader/image_downloader.dart';
 import 'package:ixora_assignment/core/app_values.dart';
+import 'package:ixora_assignment/core/size_config.dart';
 import 'package:ixora_assignment/modules/galleryview/controllers/galleryView_controller.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -46,8 +47,8 @@ class GalleryView extends GetView<GalleryViewController> {
                           galleryController.recievedImageListAsArguments.length,
                       loadingBuilder: (context, event) => Center(
                         child: SizedBox(
-                          width: 20.0,
-                          height: 20.0,
+                          width: getProportionateScreenWidth(context,20.0),
+                          height: getProportionateScreenHeight(context,20.0),
                           child: CircularProgressIndicator(
                             value: event == null
                                 ? 0
@@ -83,8 +84,8 @@ class GalleryView extends GetView<GalleryViewController> {
                               decoration: BoxDecoration(
                                   color: Colors.blueAccent,
                                   border: Border.all(color: Colors.blueAccent)),
-                              width: 20.0,
-                              height: 30.0,
+                              width: getProportionateScreenWidth(context,20.0),
+                              height: getProportionateScreenWidth(context,30.0),
                               child: const Center(
                                 child: Text(
                                   AppValues.DOWNLOAD_TITLE,
@@ -115,8 +116,8 @@ class GalleryView extends GetView<GalleryViewController> {
                             },
                           ),
                         ),
-                        const SizedBox(
-                          width: 5.0,
+                         SizedBox(
+                          width: getProportionateScreenWidth(context,5.0),
                         ),
                         Expanded(
                           flex: 1,
@@ -125,8 +126,8 @@ class GalleryView extends GetView<GalleryViewController> {
                               decoration: BoxDecoration(
                                   color: Colors.blueAccent,
                                   border: Border.all(color: Colors.blueAccent)),
-                              width: 20.0,
-                              height: 30.0,
+                              width: getProportionateScreenWidth(context,20.0),
+                              height: getProportionateScreenHeight(context,30.0),
                               child: const Center(
                                 child: Text(
                                   AppValues.SHARE_BUTTON_TITLE,

@@ -39,8 +39,8 @@ class HomeView extends GetView<HomeController> {
                       (context, index) {
                         return InkWell(
                           child: SizedBox(
-                            width: 200,
-                            height: 200,
+                            width: getProportionateScreenHeight(context,200),
+                            height: getProportionateScreenWidth(context,200),
                             child: CachedNetworkImage(
                               progressIndicatorBuilder:
                                   (context, url, progress) => Center(
