@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ixora_assignment/core/app_values.dart';
 import 'package:ixora_assignment/core/size_config.dart';
 import 'package:ixora_assignment/core/strings.dart';
 import 'package:ixora_assignment/routes/app_pages.dart';
