@@ -3,6 +3,7 @@ import 'dart:developer';
 
 
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart' as DIO;
 import 'package:hive/hive.dart';
@@ -49,8 +50,8 @@ class PhotoProvider extends GetxService {
   List<PhotoResponseModel> photoListRes = <PhotoResponseModel>[];
 
    getAllPhotoListProviderFromHive () async{
-    for(String key in Hive.box(AppValues.CACHE_API_BOX).keys) {
-      PhotoResponseModel photoResponseModel = Hive.box(AppValues.CACHE_API_BOX).get(key);
+    for(String key in Hive.box(AppValues.DATABASE_NAME).keys) {
+      PhotoResponseModel photoResponseModel = Hive.box(AppValues.DATABASE_NAME).get(key);
       photoListRes.add(photoResponseModel);
     }
     return photoListRes ;
@@ -70,13 +71,13 @@ class PhotoProvider extends GetxService {
           List<PhotoResponseModel> photoList = <PhotoResponseModel>[];
           for(int i=0;i<response.data.length;i++){
             var test = PhotoResponseModel.fromJson(response.data[i]);
-            Hive.box(AppValues.CACHE_API_BOX).put(test.id.toString(), test);
+            Hive.box(AppValues.DATABASE_NAME).put(test.id.toString(), test);
             photoList.add(test);
           }
           return photoList;
         }
     } catch (SocketException) {
-      print(SocketException.toString());
+      debugPrint(SocketException.toString());
     }
   }
 

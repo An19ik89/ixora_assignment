@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:image_downloader/image_downloader.dart';
 import 'package:ixora_assignment/core/app_values.dart';
 import 'package:ixora_assignment/core/size_config.dart';
+import 'package:ixora_assignment/core/strings.dart';
 import 'package:ixora_assignment/modules/galleryview/controllers/galleryView_controller.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
@@ -22,7 +23,7 @@ class GalleryView extends GetView<GalleryViewController> {
                 backgroundColor: Colors.black,
                 appBar: AppBar(
                   backgroundColor: Colors.grey.shade700,
-                  title: const Text(AppValues.PHOTO_GALLERY_APPBAR_TITLE),
+                  title: const Text(AppStrings.PHOTO_GALLERY_APPBAR_TITLE),
                   centerTitle: true,
                 ),
                 body: Stack(
@@ -71,7 +72,7 @@ class GalleryView extends GetView<GalleryViewController> {
                           child: Container(
                             padding: const EdgeInsets.all(16.0),
                             child: Text(
-                              '${AppValues.IMAGE_TITLE} : ${galleryController.index + 1}/${galleryController.recievedImageListAsArguments.length}',
+                              '${AppStrings.IMAGE_TITLE} : ${galleryController.index + 1}/${galleryController.recievedImageListAsArguments.length}',
                               style: const TextStyle(
                                   color: Colors.white, fontSize: 18.0),
                             ),
@@ -88,7 +89,7 @@ class GalleryView extends GetView<GalleryViewController> {
                               height: getProportionateScreenWidth(context,30.0),
                               child: const Center(
                                 child: Text(
-                                  AppValues.DOWNLOAD_TITLE,
+                                  AppStrings.DOWNLOAD_TITLE,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 13.0),
@@ -108,8 +109,8 @@ class GalleryView extends GetView<GalleryViewController> {
                                 if (imageId == null) {
                                   return;
                                 }
-                                Get.snackbar(AppValues.DOWNLOAD_TITLE,
-                                    AppValues.DOWNLOADED_TITLE);
+                                Get.snackbar(AppStrings.DOWNLOAD_TITLE,
+                                    AppStrings.DOWNLOADED_TITLE);
                               } on PlatformException catch (error) {
                                 debugPrint(error.message);
                               }
@@ -130,7 +131,7 @@ class GalleryView extends GetView<GalleryViewController> {
                               height: getProportionateScreenHeight(context,30.0),
                               child: const Center(
                                 child: Text(
-                                  AppValues.SHARE_BUTTON_TITLE,
+                                  AppStrings.SHARE_BUTTON_TITLE,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 13.0),

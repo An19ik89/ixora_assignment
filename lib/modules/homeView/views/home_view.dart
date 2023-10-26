@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ixora_assignment/core/app_values.dart';
 import 'package:ixora_assignment/core/size_config.dart';
+import 'package:ixora_assignment/core/strings.dart';
 import 'package:ixora_assignment/routes/app_pages.dart';
 import '../controllers/home_controller.dart';
 
@@ -25,7 +26,7 @@ class HomeView extends GetView<HomeController> {
                   expandedHeight: getProportionateScreenHeight(context, 120.0),
                   flexibleSpace: FlexibleSpaceBar(
                     title: InkWell(
-                      child: const Text(AppValues.HOME_APPBAR_TITLE),
+                      child: const Text(AppStrings.HOME_APPBAR_TITLE),
                       onTap: () {
                         Get.toNamed(Routes.TESTVIEW);
                       },

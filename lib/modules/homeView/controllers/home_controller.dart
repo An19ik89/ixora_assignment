@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ixora_assignment/api/repository/get_photos_repository.dart';
 import 'package:ixora_assignment/core/app_values.dart';
+import 'package:ixora_assignment/core/strings.dart';
 import 'package:ixora_assignment/data/model/photoresponse.dart';
 import 'package:ixora_assignment/routes/app_pages.dart';
 
@@ -64,7 +65,7 @@ class HomeController extends GetxController {
         connectionType.value = 0;
         getAllPhotoListWithHive(connectionType.value);
         break;
-      default: Get.snackbar(AppValues.NETWORK_ERROR_TITLE, AppValues.NETWORK_STATUS_MESSAGE);
+      default: Get.snackbar(AppStrings.NETWORK_ERROR_TITLE, AppStrings.NETWORK_STATUS_MESSAGE);
       break;
     }
   }
@@ -93,7 +94,7 @@ class HomeController extends GetxController {
   }
 
   openPhotoView(int index) {
-    connectionType.value == 0 ? Get.snackbar(AppValues.NETWORK_ERROR_TITLE,AppValues.NO_INTERNET_MESSAGE,snackPosition: SnackPosition.BOTTOM) :
+    connectionType.value == 0 ? Get.snackbar(AppStrings.NETWORK_ERROR_TITLE,AppStrings.NO_INTERNET_MESSAGE,snackPosition: SnackPosition.BOTTOM) :
     Get.toNamed(Routes.GALLERYVIEW, arguments: [
       {"imageList": rxPhotoResponseModelList},
       {"index": index},
