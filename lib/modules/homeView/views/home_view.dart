@@ -27,49 +27,67 @@ class HomeView extends GetView<HomeController> {
                     title: Text(AppStrings.HOME_APPBAR_TITLE),
                   ),
                 ),
-                SliverPadding(
-                  padding: const EdgeInsets.all(15.0),
-                  sliver: SliverGrid(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        return InkWell(
-                          child: SizedBox(
-                            width: getProportionateScreenHeight(context,200),
-                            height: getProportionateScreenWidth(context,200),
-                            child: CachedNetworkImage(
-                              progressIndicatorBuilder:
-                                  (context, url, progress) => Center(
-                                child: CircularProgressIndicator(
-                                  value: progress.progress,
+                homeController.rxPhotoResponseModelList.isNotEmpty
+                    ? SliverPadding(
+                        padding: const EdgeInsets.all(15.0),
+                        sliver: SliverGrid(
+                          delegate: SliverChildBuilderDelegate(
+                            (context, index) {
+                              return InkWell(
+                                child: SizedBox(
+                                  width: getProportionateScreenHeight(
+                                      context, 200),
+                                  height:
+                                      getProportionateScreenWidth(context, 200),
+                                  child: CachedNetworkImage(
+                                    progressIndicatorBuilder:
+                                        (context, url, progress) => Center(
+                                      child: CircularProgressIndicator(
+                                        value: progress.progress,
+                                      ),
+                                    ),
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(
+                                      Icons.error,
+                                      size: 20.0,
+                                      color: Colors.redAccent,
+                                    ),
+                                    fadeInCurve: Curves.bounceOut,
+                                    fadeInDuration: const Duration(seconds: 3),
+                                    imageUrl: homeController
+                                        .rxPhotoResponseModelList[index]
+                                        .urls!
+                                        .regular
+                                        .toString(),
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
-                              ),
-                              errorWidget: (context, url, error) => const Icon(
-                                Icons.error,
-                                size: 20.0,
-                                color: Colors.redAccent,
-                              ),
-                              fadeInCurve: Curves.bounceOut,
-                              fadeInDuration: const Duration(seconds: 3),
-                              imageUrl: homeController
-                                  .rxPhotoResponseModelList[index].urls!.regular
-                                  .toString(),
-                              fit: BoxFit.fill,
-                            ),
+                                onTap: () =>
+                                    homeController.openPhotoView(index),
+                              );
+                            },
+                            childCount:
+                                homeController.rxPhotoResponseModelList.length,
                           ),
-                          onTap: () => homeController.openPhotoView(index),
-                        );
-                      },
-                      childCount:
-                          homeController.rxPhotoResponseModelList.length,
-                    ),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 15,
-                      crossAxisSpacing: 15,
-                      childAspectRatio: 2.0,
-                    ),
-                  ),
-                ),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 15,
+                            crossAxisSpacing: 15,
+                            childAspectRatio: 2.0,
+                          ),
+                        ),
+                      )
+                    : const SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [Text(AppStrings.NO_DATA)],
+                          ),
+                        ),
+                      ),
               ],
             ))));
   }

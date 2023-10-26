@@ -47,14 +47,14 @@ class PhotoProvider extends GetxService {
 
   final ApiClient _apiClient = Get.find();
 
-  List<PhotoResponseModel> photoListRes = <PhotoResponseModel>[];
+  List<PhotoResponseModel> photoListForStoringFromHive = <PhotoResponseModel>[];
 
    getAllPhotoListProviderFromHive () async{
     for(String key in Hive.box(AppValues.DATABASE_NAME).keys) {
       PhotoResponseModel photoResponseModel = Hive.box(AppValues.DATABASE_NAME).get(key);
-      photoListRes.add(photoResponseModel);
+      photoListForStoringFromHive.add(photoResponseModel);
     }
-    return photoListRes ;
+    return photoListForStoringFromHive ;
   }
 
   Future getAllPhotoListProvider (int pageNumber,int listLength,int connectionType) async
@@ -75,6 +75,9 @@ class PhotoProvider extends GetxService {
             photoList.add(test);
           }
           return photoList;
+        }
+        else{
+          Get.snackbar(response.statusCode.toString(), response.statusMessage.toString(),snackPosition: SnackPosition.BOTTOM);
         }
     } catch (SocketException) {
       debugPrint(SocketException.toString());

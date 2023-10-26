@@ -8,4 +8,5 @@ class AppStrings{
   static const String SHARE_BUTTON_TITLE = "Share";
   static const String DOWNLOADED_TITLE = "Image downloaded.";
   static const String IMAGE_TITLE = "Image";
+  static const String NO_DATA = "No data is available";
 }
